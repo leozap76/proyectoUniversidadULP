@@ -30,6 +30,14 @@ public class Materia {
     public Materia() {
     }
 
+    public Materia(String nombre, int anio, boolean activo) {
+        this.nombre = nombre;
+        this.anio = anio;
+        this.activo = activo;
+    }
+
+    
+
     public int getIdMateria() {
         return idMateria;
     }
@@ -61,6 +69,12 @@ public class Materia {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "Materia{" + "nombre=" + nombre + ", anio=" + anio + ", activo=" + activo + '}';
+    }
+    
     
     
     
