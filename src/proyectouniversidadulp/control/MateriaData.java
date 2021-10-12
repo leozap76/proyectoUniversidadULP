@@ -132,6 +132,21 @@ public class MateriaData {
        return materia;    
     }
     
+    public void borrarMateria(int idMateria){
+        String sql = "UPDATE materia SET activo = 0 WHERE materia.idMateria=?";
+        
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setInt(1, idMateria);
+            
+            ResultSet rs =ps.executeQuery();
+            
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar ");
+        } 
+    }
+    
 //    public Materia buscarMateriasXAlumno(int id){
 //    Materia materia=null;
 //    

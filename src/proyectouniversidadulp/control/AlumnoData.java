@@ -144,6 +144,20 @@ public class AlumnoData {
        
     }
     
+    public void borrarAlumno(int id){
+        String sql = "UPDATE alumno SET activo = 0 WHERE alumno.idAlumno=?";
+        
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ResultSet rs =ps.executeQuery();
+            
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar ");
+        } 
+    }
     
     
 //    void inscribirse(Materia materia){
