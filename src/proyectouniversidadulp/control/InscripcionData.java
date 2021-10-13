@@ -104,3 +104,59 @@ public class InscripcionData {
     
 }
 
+/*
+
+    public void inscribirAlumno(Inscripcion inscripcion){
+        String sql = "INSERT INTO inscripcion (idAlumno, idMateria) VALUES (?, ?)";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, inscripcion.getAlumno().getIdAlumno());
+            ps.setInt(2, inscripcion.getMateria().getIdMateria());
+            
+            ps.executeUpdate();
+            ResultSet rs= ps.getGeneratedKeys(); 
+            if (rs.next()){
+                inscripcion.setIdInsc(rs.getInt(1)); 
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al inscribir "+ex);
+        }
+    }
+    
+    public void desinscribirAlumno(Inscripcion inscripcion){
+        String sql = "DELETE FROM inscripcion WHERE idAlumno = ? AND idMateria = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, inscripcion.getAlumno().getIdAlumno());
+            ps.setInt(2, inscripcion.getMateria().getIdMateria());
+            
+            ps.executeUpdate();
+            ResultSet rs= ps.getGeneratedKeys(); //recupero el idAlumno
+            
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al desinscribir "+ex);
+        }
+    }
+    
+    public void agregarNota(Inscripcion inscripcion){
+        String sql = "UPDATE universidad.inscripcion SET nota = ? WHERE idInsc = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            
+            ps.setDouble(1, inscripcion.getNota());
+            ps.setInt(2, inscripcion.getIdInsc());
+            
+            ps.executeUpdate();
+            
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al agregar nota "+ex);
+        }
+    }
+
+*/
