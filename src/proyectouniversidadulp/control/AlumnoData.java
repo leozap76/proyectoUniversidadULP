@@ -158,7 +158,34 @@ public class AlumnoData {
             System.out.println("Error al eliminar ");
         } 
     }
+ public void borrarAlumnoDefinitivo(int id){
+      String sql="DELETE FROM alumno WHERE idAlumno=?";
+      PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+             System.out.println("Error al borrar "+ex);
+        }
+        }
+   
     
+     public void activarAlumno(int id){
+    String sql = "UPDATE alumno SET activo=? WHERE idAlumno=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1,true);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al desactivar "+ex);
+        }
+    }
+    
+
     
 //    void inscribirse(Materia materia){
 //        
