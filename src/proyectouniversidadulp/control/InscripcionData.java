@@ -105,6 +105,8 @@ public class InscripcionData {
 }
 
 /*
+          
+            los hice creando un modelo inscripcion y pasando los datos desde ahi
 
     public void inscribirAlumno(Inscripcion inscripcion){
         String sql = "INSERT INTO inscripcion (idAlumno, idMateria) VALUES (?, ?)";
