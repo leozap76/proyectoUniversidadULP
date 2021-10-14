@@ -56,7 +56,7 @@ public class InscripcionData {
         } catch (SQLException ex) {
            System.out.println("error al insertar inscripcion");
         }
-    }
+    }  
     public List<Inscripcion> obtenerInscripcionesMateria(int id){
         List<Inscripcion> lista =new ArrayList<>();
         String sql="SELECT * FROM inscripcion,alumno,materia WHERE inscripcion.idAlumno=alumno.idAlumno and inscripcion.idMateria=materia.idMateria and materia.idMateria = ?";
@@ -127,10 +127,95 @@ public class InscripcionData {
             System.out.println("Error al agregar nota "+ex);
         }
     }
+     public List<Alumno> obtenerAlumnosMateria(int idMateria){
+        List<Alumno> lista =new ArrayList<>();
+        String sql;
+        Alumno alumno;
+        sql="SELECT alumno.idAlumno, legajo, nombre, apellido, fechNac, activo FROM inscripcion,alumno WHERE inscripcion.idAlumno=alumno.idAlumno and inscripcion.idMateria = ?";
+       PreparedStatement ps ;
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, idMateria);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                alumno =new Alumno();
+               alumno.setIdAlumno(rs.getInt("idAlumno"));
+               alumno.setLegajo(rs.getInt("legajo"));
+               alumno.setNombre(rs.getString("nombre"));
+               alumno.setApellido(rs.getString("apellido"));
+               alumno.setFechNac(rs.getDate("fechNac").toLocalDate());
+               alumno.setActivo(rs.getBoolean("activo"));
+               lista.add(alumno);
+               
+                        
+                 }
+            ps.close();
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null,"error en obtener alumno por materia");
+        }
+       return lista;
+    } 
+    
+    
+    public List<Materia> obtenerMateriasCursadasAlumno(int idAlumno){
+        List<Materia> ma=new ArrayList<>();
+        Materia materia;
+        String sql;
+        sql="SELECT materia.idMateria, materia.Nombre, anio, materia.activo FROM `inscripcion`,`alumno`,`materia` WHERE inscripcion.idAlumno=alumno.idAlumno and inscripcion.idMateria=materia.idMateria and materia.activo=1 and inscripcion.idAlumno = ?";
+     PreparedStatement ps ;
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next()){
+                materia = new Materia();
+                materia.setIdMateria(rs.getInt(1));                           
+                materia.setNombre(rs.getString(2));
+                materia.setAnio(rs.getInt(3));
+                materia.setActivo(rs.getBoolean(4));
+                
+                ma.add(materia);
+            }
 
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showInternalMessageDialog(null, "Error en buscar materia");
 
+        }
+        return ma;
     }
     
+    public List<Materia> obtenerMateriasNOCursadasAlumno(int idAlumno){
+        String sql;
+        sql="SELECT * FROM materia\n" +
+"WHERE idMateria not in(SELECT materia.idMateria FROM `inscripcion`,`alumno`,`materia` WHERE inscripcion.idAlumno=alumno.idAlumno and inscripcion.idMateria=materia.idMateria and materia.activo=1 and inscripcion.idAlumno = ?);" ;
+ List<Materia> ma=new ArrayList<>();
+        Materia materia;
+     PreparedStatement ps ;
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next()){
+                materia = new Materia();
+                materia.setIdMateria(rs.getInt(1));                           
+                materia.setNombre(rs.getString(2));
+                materia.setAnio(rs.getInt(3));
+                materia.setActivo(rs.getBoolean(4));
+                
+                ma.add(materia);
+            }
+            
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showInternalMessageDialog(null, "Error en buscar materia");
 
-    
-    
+        }
+        return ma;
+    }
+
+
+    }  
