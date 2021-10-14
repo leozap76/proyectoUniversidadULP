@@ -59,14 +59,15 @@ public class InscripcionData {
     }
     public List<Inscripcion> obtenerInscripcionesMateria(int id){
         List<Inscripcion> lista =new ArrayList<>();
-        String sql;
+        String sql="SELECT * FROM inscripcion,alumno,materia WHERE inscripcion.idAlumno=alumno.idAlumno and inscripcion.idMateria=materia.idMateria and materia.idMateria = ?";
+        
         Inscripcion ins;
         Alumno alumno;
         Materia materia;
-        sql="\"SELECT * FROM inscripcion,alumno,materia WHERE inscripcion.idAlumno=alumno.idAlumno and inscripcion.idMateria=materia.idMateria and materia.idMateria = ?";
-       PreparedStatement ps ;
+        
+       
         try {
-            ps=con.prepareStatement(sql);
+            PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
@@ -77,10 +78,8 @@ public class InscripcionData {
                 ins.setMateria(materia);
                 ins.setNota(rs.getDouble(rs.getInt(4)));
                 lista.add(ins);
-                
                         
             }
-            
             
         } catch (SQLException ex) {
             Logger.getLogger(InscripcionData.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,6 +97,23 @@ public class InscripcionData {
         return md.buscarMaterias(id);
     }
     
-}
+    public void borrarInscripcion(int idInsc){
+       String sql="DELETE FROM inscripcion WHERE inscripcion.idInsc = ?";
+
+      PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idInsc);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+             System.out.println("Error al borrar "+ex);
+        }
+        }
+
+
+    }
+    
+
     
     
