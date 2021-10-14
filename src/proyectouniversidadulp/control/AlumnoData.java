@@ -186,32 +186,4 @@ public class AlumnoData {
     }
     
 
-    
-//    void inscribirse(Materia materia){
-//        
-//        Inscripcion inscr=new Inscripcion();
-//        materia=null;
-//         //public void guardarAlumno(Alumno alumno){
-//        //String sql = "INSERT INTO alumno (legajo, nombre, apellido ,fechNac, activo) VALUES (?,?,?,?,?)";
-//       String sql= "INSERT INTO `inscripcion` (`idInsc`, `idAlumno`, `idMateria`, `nota`) VALUES (NULL, '2', '2', NULL)";
-//       
-//       try {
-//            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-//            ps.setInt(1, inscr.getIdInsc());
-//            ps.setInt(2, inscr.getAlumno().getIdAlumno());
-//            ps.setInt(3, inscr.getMateria().getIdMateria());
-//            ps.setDouble(4, inscr.getNota());
-//             
-//            ps.executeUpdate();
-//            ResultSet rs= ps.getGeneratedKeys(); //recupero el idInscripcion
-//            
-//            if (rs.next()){
-//             inscr.setIdInsc(rs.getInt(1));
-//            }
-//            ps.close();
-//        } catch (SQLException ex) {
-//            System.out.println("Error al insertar "+ex);
-//        }
-   
-//    }
 }

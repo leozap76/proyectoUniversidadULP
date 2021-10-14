@@ -147,30 +147,6 @@ public class MateriaData {
         } 
     }
     
-//    public Materia buscarMateriasXAlumno(int id){
-//    Materia materia=null;
-//    
-//    String sql="SELECT * FROM `materia`,`alumno` WHERE alumno.idAlumno=?";
-//    
-//        try {
-//            PreparedStatement ps= con.prepareStatement(sql);
-//            ps.setInt(1, id);
-//            
-//            ResultSet rs =ps.executeQuery();
-//            if (rs.next()){
-//                materia = new Materia();
-//                materia.setIdMateria(rs.getInt("idMateria"));
-//                materia.setNombre(rs.getString(2));
-//                materia.setAnio(rs.getInt(3));
-//                materia.setActivo(rs.getBoolean(4));
-//               
-//            }
-//          
-//        } catch (SQLException ex) {
-//            System.out.println("Error al buscar ");
-//        }    
-//       return materia;    
-//       
-//    }
+
     
 }
