@@ -110,6 +110,23 @@ public class InscripcionData {
              System.out.println("Error al borrar "+ex);
         }
         }
+    
+    public void actualizarNota(int idInsc, double nota){
+        String sql = "UPDATE universidad.inscripcion SET nota = ? WHERE idInsc = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setDouble(1, nota);
+            ps.setInt(2, idInsc);
+            
+            ps.executeUpdate();
+            
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al agregar nota "+ex);
+        }
+    }
 
 
     }
