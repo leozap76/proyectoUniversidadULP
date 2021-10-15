@@ -108,7 +108,7 @@ public class AlumnoData {
             ps.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error al buscar ");
+            System.out.println("Error al buscar ALumno ");
         }    
        return alumnos;    
        

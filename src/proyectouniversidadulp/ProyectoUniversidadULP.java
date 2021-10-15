@@ -40,7 +40,8 @@ public class ProyectoUniversidadULP {
             //d1.guardarInscripcion(i1);
             System.out.println(d1.obtenerAlumnosMateria(31));
             System.out.println(d1.obtenerMateriasCursadasAlumno(9));
-        
+            System.out.println(d1.obtenerInscripciones());
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProyectoUniversidadULP.class.getName()).log(Level.SEVERE, null, ex);
         }

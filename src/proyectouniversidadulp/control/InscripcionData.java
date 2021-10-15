@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import proyectouniversidadulp.modelo.*;
 import proyectouniversidadulp.modelo.Conexion;
 
@@ -216,6 +217,36 @@ public class InscripcionData {
         }
         return ma;
     }
-
-
+ 
+//apartir de aca//
+    public List<Inscripcion> obtenerInscripciones(){
+         List<Inscripcion> listaa =new ArrayList<>();
+        String sql="SELECT inscripcion.idInscripcion, inscripcion.idAlumno, inscripcion.idMateria, inscripcion.nota FROM `inscripcion`,materia WHERE inscripcion.idMateria=materia.idMateria and materia.activo= ? ";
+        Inscripcion in=new Inscripcion();
+        Materia ma=new Materia();
+        Alumno al=new Alumno();
+         PreparedStatement ps ;
+        try {
+            ps= con.prepareStatement(sql);
+            ps.setBoolean(1, true);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+            ma=this.buscarMateria(rs.getInt("inscripcion.idMateria"));
+            al=this.buscarAlumno(rs.getInt("inscripcion.idAlumno"));
+            in.setAlumno(al);
+            in.setMateria(ma);
+            in.setIdInsc(rs.getInt("inscripcion.idInscripcion"));
+            in.setNota(rs.getDouble("inscripcion.nota"));
+            listaa.add(in);
+            }
+            ps.close();
+         
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"error al buscar inscripcioneses"+ ex);
+      
+        }
+         
+       return listaa;
+    } 
+    
     }  
