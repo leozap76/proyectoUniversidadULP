@@ -247,6 +247,36 @@ public class InscripcionData {
         }
          
        return listaa;
-    } 
+    }
+    
+    public Inscripcion obtenerInscripcion(int idAlumno, int idMateria){
+        String sql="SELECT * FROM universidad.inscripcion WHERE idAlumno=? AND idMateria = ?";
+        Inscripcion in=new Inscripcion();
+        Materia ma=new Materia();
+        Alumno al=new Alumno();
+        
+         PreparedStatement ps ;
+        try {
+            ps= con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ps.setInt(2, idMateria);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+            ma=this.buscarMateria(rs.getInt("inscripcion.idMateria"));
+            al=this.buscarAlumno(rs.getInt("inscripcion.idAlumno"));
+            in.setAlumno(al);
+            in.setMateria(ma);
+            in.setIdInsc(rs.getInt("inscripcion.idInsc"));
+            in.setNota(rs.getDouble("inscripcion.nota"));
+            }
+            ps.close();
+         
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"error al buscar inscripcion"+ ex);
+      
+        }
+         
+       return in;
+    }
     
     }  
