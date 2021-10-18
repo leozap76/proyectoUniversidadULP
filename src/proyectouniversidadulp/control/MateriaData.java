@@ -146,7 +146,19 @@ public class MateriaData {
             System.out.println("Error al eliminar ");
         } 
     }
-    
+    public void borrarMateriadef(int idMAteria){
+        String sql="DELETE FROM materia WHERE matria.activo=0 and materia.idMateria = ?";
+ 
+       PreparedStatement ps;
+         try {
+             ps = con.prepareStatement(sql);
+             ps.setInt(1, idMAteria);
+             ps.executeUpdate();
+             ps.close();
+         } catch (SQLException ex) {
+              System.out.println("Error al borrar  definitivo la materia esta activa"+ex);
+         }
+         }
 
     
 }

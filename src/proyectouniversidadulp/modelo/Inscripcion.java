@@ -14,7 +14,10 @@ public class Inscripcion {
     private Alumno alumno;
     private Materia materia;
     private double nota;
-   
+    @Override
+    public String toString() {
+        return "Inscripcion{" + "idInsc=" + idInsc + ", alumno=" + alumno + ", materia=" + materia + ", nota=" + nota + '}';
+    }
 
     public Inscripcion(Alumno alumno, Materia materia, double nota) {
         this.alumno = alumno;
