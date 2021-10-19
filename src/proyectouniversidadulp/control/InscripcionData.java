@@ -249,6 +249,40 @@ public class InscripcionData {
        return listaa;
     }
     
+    /*
+    public List<Inscripcion> obtenerInscripciones(){
+         List<Inscripcion> listaa =new ArrayList<>();
+        String sql="SELECT * FROM inscripcion";
+        
+        AlumnoData ad = new AlumnoData(conexion);
+        MateriaData md = new MateriaData(conexion);
+         PreparedStatement ps ;
+        try {
+            ps= con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+            Inscripcion in=new Inscripcion();
+            Materia ma=new Materia();
+            Alumno al=new Alumno();
+            ma=this.buscarMateria(rs.getInt("inscripcion.idMateria"));
+            al=this.buscarAlumno(rs.getInt("inscripcion.idAlumno"));
+            in.setAlumno(al);
+            in.setMateria(ma);
+            in.setIdInsc(rs.getInt("inscripcion.idInsc"));
+            in.setNota(rs.getDouble("inscripcion.nota"));
+            listaa.add(in);
+            }
+            ps.close();
+         
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"error al buscar inscripcioneses"+ ex);
+      
+        }
+         
+       return listaa;
+    }
+    */
+    
     public Inscripcion obtenerInscripcion(int idAlumno, int idMateria){
         String sql="SELECT * FROM universidad.inscripcion WHERE idAlumno=? AND idMateria = ?";
         Inscripcion in=new Inscripcion();
