@@ -14,13 +14,24 @@ public class Inscripcion {
     private Alumno alumno;
     private Materia materia;
     private double nota;
-    private boolean activo;
+    @Override
+    public String toString() {
+        return "Inscripcion{" + "idInsc=" + idInsc + ", alumno=" + alumno + ", materia=" + materia + ", nota=" + nota + '}';
+    }
 
-    public Inscripcion(Alumno alumno, Materia materia, double nota, boolean activo) {
+    public Inscripcion(Alumno alumno, Materia materia, double nota) {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
-        this.activo = activo;
+       
+    }
+
+    public Inscripcion(int idInsc, Alumno alumno, Materia materia, double nota) {
+        this.idInsc = idInsc;
+        this.alumno = alumno;
+        this.materia = materia;
+        this.nota = nota;
+        
     }
 
     public Inscripcion() {
@@ -58,13 +69,7 @@ public class Inscripcion {
         this.nota = nota;
     }
 
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
+   
 
     
     
