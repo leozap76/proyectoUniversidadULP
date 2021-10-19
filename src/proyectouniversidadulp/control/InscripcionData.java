@@ -221,7 +221,7 @@ public class InscripcionData {
 //apartir de aca//
     public List<Inscripcion> obtenerInscripciones(){
          List<Inscripcion> listaa =new ArrayList<>();
-        String sql="SELECT inscripcion.idInscripcion, inscripcion.idAlumno, inscripcion.idMateria, inscripcion.nota FROM `inscripcion`,materia WHERE inscripcion.idMateria=materia.idMateria and materia.activo= ? ";
+        String sql="SELECT inscripcion.idInsc, inscripcion.idAlumno, inscripcion.idMateria, inscripcion.nota FROM `inscripcion`,materia WHERE inscripcion.idMateria=materia.idMateria and materia.activo= ? ";
         Inscripcion in=new Inscripcion();
         Materia ma=new Materia();
         Alumno al=new Alumno();
@@ -235,7 +235,7 @@ public class InscripcionData {
             al=this.buscarAlumno(rs.getInt("inscripcion.idAlumno"));
             in.setAlumno(al);
             in.setMateria(ma);
-            in.setIdInsc(rs.getInt("inscripcion.idInscripcion"));
+            in.setIdInsc(rs.getInt("inscripcion.idInsc"));
             in.setNota(rs.getDouble("inscripcion.nota"));
             listaa.add(in);
             }
