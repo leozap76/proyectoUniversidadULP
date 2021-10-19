@@ -33,14 +33,27 @@ public class ProyectoUniversidadULP {
      Conexion conexion ;
         try {
             conexion = new Conexion();
-         Alumno juan=new Alumno(9,9943,"juan","lopes",LocalDate.of(2000,02, 24),true);
-            Materia frances=new Materia(31,"frances",4,true);
-            Inscripcion i1=new Inscripcion(juan,frances,0);
-            InscripcionData d1=new InscripcionData(conexion);
-            //d1.guardarInscripcion(i1);
-            System.out.println(d1.obtenerAlumnosMateria(31));
-            System.out.println(d1.obtenerMateriasCursadasAlumno(9));
-            System.out.println(d1.obtenerInscripciones());
+            InscripcionData id=new InscripcionData(conexion);
+            AlumnoData ad=new AlumnoData(conexion);
+            MateriaData md=new MateriaData(conexion);
+            
+            Alumno a1=new Alumno(9,9943,"juan","lopes",LocalDate.of(2000,02, 24),true);
+           // ad.guardarAlumno(a1);
+            Materia m1=new Materia(31,"frances",4,true);
+            //md.guardarMateria(m1);
+            Inscripcion i1=new Inscripcion(a1,m1,0);
+            
+            Alumno a2=new Alumno(9,99,"daniel","lopes",LocalDate.of(2000,02, 24),true);
+            ad.guardarAlumno(a2);
+            Materia m2=new Materia(99,"computo",4,true);
+            md.guardarMateria(m2);
+            Inscripcion i2=new Inscripcion(a2,m2,0);
+            
+           
+            //id.guardarInscripcion(i2);
+           //System.out.println(id.obtenerAlumnosMateria(67));
+//            System.out.println(id.obtenerMateriasCursadasAlumno(9));
+            System.out.println(id.obtenerInscripciones());
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProyectoUniversidadULP.class.getName()).log(Level.SEVERE, null, ex);
