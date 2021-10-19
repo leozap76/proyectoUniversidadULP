@@ -158,19 +158,6 @@ public class AlumnoData {
             System.out.println("Error al eliminar ");
         } 
     }
-    public void borrarAlumnoDefinitivo(int id){
-        String sql="DELETE FROM alumno WHERE alumno.activo=0 and alumno.idAlumno = ?";
-   
-         PreparedStatement ps;
-           try {
-               ps = con.prepareStatement(sql);
-               ps.setInt(1, id);
-               ps.executeUpdate();
-               ps.close();
-           } catch (SQLException ex) {
-                System.out.println("Error al borrar  definitivo la alumno esta activo"+ex);
-           }
-           }
    
     
      public void activarAlumno(int id){
