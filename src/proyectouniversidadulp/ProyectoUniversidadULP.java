@@ -21,7 +21,7 @@ import proyectouniversidadulp.modelo.Inscripcion;
 import proyectouniversidadulp.modelo.Materia;
 
 /**aver si funciona mi 
- *pull
+ *pullf  gi
  * @author Admin
  */
 public class ProyectoUniversidadULP {
